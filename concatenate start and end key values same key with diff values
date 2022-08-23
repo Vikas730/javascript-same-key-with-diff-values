@@ -1,0 +1,105 @@
+// concatenate "start" and "end" key values where same key i.e. "day" javascript code
+var myarray = {
+  hours: [
+    {
+      open: [
+        {
+          is_overnight: false,
+          start: '1030',
+          end: '1330',
+          day: 0,
+        },
+        {
+          is_overnight: false,
+          start: '1100',
+          end: '2030',
+          day: 0,
+        },
+        {
+          is_overnight: false,
+          start: '1130',
+          end: '1230',
+          day: 1,
+        },
+        {
+          is_overnight: false,
+          start: '1200',
+          end: '2130',
+          day: 1,
+        },
+        {
+          is_overnight: false,
+          start: '1230',
+          end: '1530',
+          day: 2,
+        },
+        {
+          is_overnight: false,
+          start: '1300',
+          end: '2230',
+          day: 2,
+        },
+        {
+          is_overnight: false,
+          start: '1430',
+          end: '1630',
+          day: 3,
+        },
+        {
+          is_overnight: false,
+          start: '1730',
+          end: '2300',
+          day: 3,
+        },
+        {
+          is_overnight: false,
+          start: '1580',
+          end: '1700',
+          day: 4,
+        },
+        {
+          is_overnight: false,
+          start: '1730',
+          end: '2330',
+          day: 4,
+        },
+        {
+          is_overnight: false,
+          start: '1800',
+          end: '2000',
+          day: 5,
+        },
+        {
+          is_overnight: false,
+          start: '1850',
+          end: '2430',
+          day: 6,
+        },
+      ],
+      hours_type: 'REGULAR',
+      is_open_now: true,
+    },
+  ],
+  transactions: [],
+};
+
+var result = [];
+
+for (var i = 0; i < myarray.hours[0].open.length; i++) {
+  var data = myarray.hours[0].open[i];
+  var found = false;
+  for (var j = 0; j < result.length; j++) {
+    if (result[j].day === data.day) {
+      found = true;
+      result[j].start += ', ' + data.start;
+      result[j].end += ', ' + data.end;
+      break;
+    }
+  }
+  if (!found) {
+    result.push(data);
+  }
+}
+
+//The result array is your desired result
+console.log(result);
